@@ -18,5 +18,8 @@ module.exports = {
       // "cupcake",
     ],
   },
+  backgroundImage: {
+    'hero-pattern': "url('/src/assets/images/bg.png')",
+  },
   plugins: [require("daisyui")],
 }
