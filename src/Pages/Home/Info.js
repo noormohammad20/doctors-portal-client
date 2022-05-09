@@ -5,7 +5,7 @@ import marker from '../../assets/icons/marker.svg'
 import phone from '../../assets/icons/phone.svg'
 const Info = () => {
     return (
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 px-12'>
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
             <InfoCard cardTitle="Opening Hours" cardText="6pm to 11pm without friday and holydays" bgClass="bg-gradient-to-r from-secondary to-primary" img={clock}></InfoCard>
 
             <InfoCard cardTitle="Visit Our Location" cardText="101, south mughda para dhaka" bgClass="bg-accent" img={marker}></InfoCard>
