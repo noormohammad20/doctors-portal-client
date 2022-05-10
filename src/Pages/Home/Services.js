@@ -3,6 +3,7 @@ import fluoride from '../../assets/images/fluoride.png'
 import cavity from '../../assets/images/cavity.png'
 import whitening from '../../assets/images/whitening.png'
 import Service from './Service'
+import DentalTerms from './DentalTerms'
 const Services = () => {
     const services = [
         {
@@ -38,6 +39,7 @@ const Services = () => {
                     ></Service>)
                 }
             </div>
+            <DentalTerms></DentalTerms>
         </div>
     )
 }
