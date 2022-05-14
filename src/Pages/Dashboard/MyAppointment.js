@@ -32,13 +32,16 @@ const MyAppointment = () => {
                     </thead>
                     <tbody>
                         {
-                            appointments.map(appointment => <tr>
-                                <th>1</th>
-                                <th>{appointment.patientName}</th>
-                                <td>{appointment.date}</td>
-                                <td>{appointment.slot}</td>
-                                <td>{appointment.treatment}</td>
-                            </tr>)
+                            appointments.map((appointment, index) =>
+                                <tr
+                                    key={index}
+                                >
+                                    <th>{index + 1}</th>
+                                    <th>{appointment.patientName}</th>
+                                    <td>{appointment.date}</td>
+                                    <td>{appointment.slot}</td>
+                                    <td>{appointment.treatment}</td>
+                                </tr>)
                         }
                     </tbody>
                 </table>
