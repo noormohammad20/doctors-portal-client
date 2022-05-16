@@ -6,9 +6,42 @@ import Loading from '../Shared/Loading'
 const AddDoctor = () => {
     const { register, formState: { errors }, handleSubmit } = useForm()
     const { data: services, isLoading } = useQuery('services', () => fetch('http://localhost:5000/service').then(res => res.json()))
-    const onSubmit = async data => {
 
-        console.log('data', data)
+    const imageStorageKey = '973b31c6dcc050bcb8d1db2dd1654620'
+
+    /**
+     * 3 ways to store images
+     * 1. third party storage //free open public storage is ok for practice project
+     * 2. your own storage in your own server (file system)
+     * 3. Database: mongoDB
+     * 
+     * YUP: to validate file //search: yup file validation for react hook from
+     * 
+    */
+
+    const onSubmit = async data => {
+        const image = data.image[0]
+        const formData = new FormData()
+        formData.append('image', image)
+        const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    const img = result.data.url
+                    const doctor = {
+                        name: data.name,
+                        email: data.email,
+                        specialty: data.specialty,
+                        img: img
+                    }
+                    //send to your database
+                }
+
+            })
 
     }
     if (isLoading) {
@@ -65,7 +98,7 @@ const AddDoctor = () => {
                     <label className="label">
                         <span className="label-text">specialty</span>
                     </label>
-                    <select {...register('specialty')} class="select w-full max-w-xs">
+                    <select {...register('specialty')} class="select  input-bordered w-full max-w-xs">
                         {services.map(service => <option
                             key={service._id}
                             value={service.name}
